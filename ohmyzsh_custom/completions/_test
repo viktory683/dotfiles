@@ -1,0 +1,59 @@
+#compdef test
+
+_message_next_arg()
+{
+    argcount=0
+    for word in "${words[@][2,-1]}"
+    do
+        if [[ $word != -* ]] ; then
+            ((argcount++))
+        fi
+    done
+    if [[ $argcount -le ${#myargs[@]} ]] ; then
+        _message -r $myargs[$argcount]
+        if [[ $myargs[$argcount] =~ ".*file.*" || $myargs[$argcount] =~ ".*path.*" ]] ; then
+            _files
+        fi
+    fi
+}
+
+_test ()
+{
+    local context state state_descr line
+    typeset -A opt_args
+
+    if [[ $words[$CURRENT] == -* ]] ; then
+        _arguments -C \
+        ':command:->command' \
+		'(-h)-h' \
+		'(--help)--help' \
+		'(-h)-h' \
+		'(--help)--help' \
+		'(-D)-D' \
+		'(--database)--database' \
+		'(-F)-F' \
+		'(--files)--files' \
+		'(-Q)-Q' \
+		'(--query)--query' \
+		'(-i)-i' \
+		'(-a)-a' \
+		'(-v)-v' \
+		'(-c)-c' \
+		'(-b)-b' \
+		'(-R)-R' \
+		'(--remove)--remove' \
+		'(-S)-S' \
+		'(--sync)--sync' \
+		'(-T)-T' \
+		'(--deptest)--deptest' \
+		'(-U)-U' \
+		'(--upgrade)--upgrade' \
+
+    else
+        myargs=('<target>' '<target>' '<target>' '<file>')
+        _message_next_arg
+    fi
+}
+
+
+_test "$@"
