@@ -1,0 +1,18 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.oh-my-zsh: .oh-my-zsh
+    ~/.grc.zsh: .grc.zsh
+    ~/.p10k.zsh: .p10k.zsh
+    ~/.p10k-tty.zsh: .p10k-tty.zsh
+    ~/.tmux.conf: .tmux.conf
+    ~/.zshrc: .zshrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
