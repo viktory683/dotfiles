@@ -7,7 +7,9 @@
 
 - link:
     ~/.oh-my-zsh: .oh-my-zsh
-    ~/.oh-my-zsh/custom: ohmyzsh_custom
+    ~/.oh-my-zsh/custom:
+        path: ohmyzsh_custom
+        force: true
     ~/.grc.zsh: .grc.zsh
     ~/.p10k.zsh: .p10k.zsh
     ~/.p10k-tty.zsh: .p10k-tty.zsh
